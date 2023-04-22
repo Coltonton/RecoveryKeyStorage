@@ -12,29 +12,26 @@ import json
 os.chdir(os.path.dirname(os.path.realpath(__file__)))  # __file__ is safer since it doesn't change based on where this file is called from
 
 class RecoveryKeys:
-    def __init__(self):                   # Init code runs once. sets up
+    def __init__(self):             # Init code runs once. sets up
         print_text(WELCOME_TEXT)          # Print welcome text with the flag for self welcome text
         DebugPrint("VERBOSE MODE ON")     # Notify if Verbosity Mode is on, DebugPrints only run in dev or verbose mode
-        self.start_loop()                 # Do Loop                                             
+        self.loop()                 # Do Loop                                             
 
-    def start_loop(self):                 # Loop
+    def loop(self):                 # Loop
         while True:
-            self.how_run()
+            #self.use_key()
+            #selector_picker(["Add a key", "Use a key", "Delete a key"], "What Would You Like To Do?")
+            chosenoption = get_aval_options()
+            if chosenoption == "Add a key":
+                self.add_key()
+            elif chosenoption == "Use a key":
+                self.use_key()
+            elif chosenoption == "Delete a key":
+                self.rem_key()
+            else:
+                print("RETURNED INVALID")
 
-    def how_run(self):
-        #self.use_key()
-        #selector_picker(["Add a key", "Use a key", "Delete a key"], "What Would You Like To Do?")
-        chosenoption = get_aval_options()
-        if chosenoption == "Add a key":
-            self.add_key()
-        elif chosenoption == "Use a key":
-            self.use_key()
-        elif chosenoption == "Delete a key":
-            self.rem_key()
-        else:
-            print("RETURNED INVALID")
-
-    def add_key(self):
+    def add_key(self):              # Add a Key
         pass
         name = input("What key is this for?")
         howmany = input("How Many Keys? ")
@@ -54,7 +51,7 @@ class RecoveryKeys:
         # Closing file
         f.close()
 
-    def use_key(self):
+    def use_key(self):              # Use a Key
         fi = ""
         usedKeyPairs = 0
         codeFound = False
@@ -122,23 +119,14 @@ class RecoveryKeys:
 
         usedKeyOutput = "used" if DELETE_AFTER_USE else "used.{}".format(GetRecoveryCode)
         jsonData[selectedAccount][0]["Keys"][selectedRecoveryKeyIdx] = {"recovery{}".format(selectedRecoveryKey): "{}".format(usedKeyOutput)}
+        DebugPrint("Outfile data = \n{}".format(jsonData))
         file = open(REC_KEYS_LOC, 'w')
         json.dump(jsonData, file, indent=3)
         file.close()
 
-    def rem_key(self):
+    def rem_key(self):              # Remove a Key
         pass
 
 
 if __name__ == '__main__':
     rk = RecoveryKeys()
-
-
-
-'''
-datastring = '{"Apple": [ \
-    {"recovery1": "001"},\
-    {"recovery2": "002"},\
-    {"recovery3": "003"}\
-]}' 
-'''
