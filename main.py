@@ -95,16 +95,15 @@ class RecoveryKeys:
 
         # Get An Unused Key Value
         while True:   
-            GetKeyValue = jsonData[selectedAccount][0]["Keys"][availableKeyPairs-1]['recovery{}'.format(availableKeyPairs)]
-            DebugPrint("Trying var.GetKeyValue = recovery{}".format(availableKeyPairs))
-            print(GetKeyValue[0:4])
-            if GetKeyValue[0:4] == "used":
+            GetRecoveryCode = jsonData[selectedAccount][0]["Keys"][availableKeyPairs-1]['recovery{}'.format(availableKeyPairs)]
+            DebugPrint("Trying var.GetRecoveryCode = recovery{}".format(availableKeyPairs))
+            if GetRecoveryCode[0:4] == "used":
                 DebugPrint("# USED: recovery{} Searching for next".format(availableKeyPairs))
                 availableKeyPairs -= 1
                 usedKeyPairs += 1 
                 DebugPrint("# var.availableKeyPairs = {} & var.usedKeyPairs = {}".format(availableKeyPairs, usedKeyPairs))
             else:
-                DebugPrint("# FOUND: recovery{} has not been used, and is {}".format(availableKeyPairs, GetKeyValue))
+                DebugPrint("# FOUND: recovery{} has not been used, and is {}".format(availableKeyPairs, GetRecoveryCode))
                 selectedRecoveryKey = availableKeyPairs
                 selectedRecoveryKeyIdx = availableKeyPairs-1
                 DebugPrint("# var.availableKeyPairs = {} & var.usedKeyPairs = {}".format(availableKeyPairs, usedKeyPairs))
@@ -114,14 +113,15 @@ class RecoveryKeys:
                     print("# WARNING ALL RECOVERY KEYS USED GENERATE MORE IMMEDIATELY!!!!")
                 elif ((totalKeyPairs-usedKeyPairs) <=2):
                     print("# WARNING consider generating more!")
-                print("#\n# Your recovery code is {}\n# Press Enter To Continue...".format(GetKeyValue))
+                print("#\n# Your recovery code is {}\n# Press Enter To Continue...".format(GetRecoveryCode))
                 input("###")
                 break
             if availableKeyPairs == 0:
                 print("\nYOU IDIOT! YOU HAVE NO VALID RECOVERY CODES IN THE DATABASE!! CONTACT SUPPORT AND PRAY!!\n")
                 QUIT_PROG()
 
-        jsonData[selectedAccount][0]["Keys"][selectedRecoveryKeyIdx] = {"recovery{}".format(selectedRecoveryKey): "used.{}".format(GetKeyValue)}
+        usedKeyOutput = "used" if DELETE_AFTER_USE else "used.{}".format(GetRecoveryCode)
+        jsonData[selectedAccount][0]["Keys"][selectedRecoveryKeyIdx] = {"recovery{}".format(selectedRecoveryKey): "{}".format(usedKeyOutput)}
         file = open(REC_KEYS_LOC, 'w')
         json.dump(jsonData, file, indent=3)
         file.close()

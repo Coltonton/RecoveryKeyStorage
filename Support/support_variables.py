@@ -10,6 +10,7 @@ MIN_SIM_THRESHOLD = 0.25      # user's input needs to be this percent or higher 
 MAIN_OPTIONS = ["Terminate Program","Use a key"] # "Add a key", "Delete a key"
 NEW_LINE_STAR = "\n*\n"
 REC_KEYS_LOC = 'Files/keys.json'
+DELETE_AFTER_USE = False
 
 # ===================== Texts ====================== ##
 WELCOME_TEXT = ['Created By: Colton (Brandon) S. EndLine \\n',
