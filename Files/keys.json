@@ -1,0 +1,199 @@
+{
+   "a": [
+      {
+         "Keys": [
+            {
+               "recovery1": "001"
+            },
+            {
+               "recovery2": "002"
+            },
+            {
+               "recovery3": "003"
+            },
+            {
+               "recovery4": "used.004"
+            },
+            {
+               "recovery5": "used.005"
+            }
+         ]
+      },
+      {
+         "OTP": [
+            {
+               "HasOTP": true
+            },
+            {
+               "otp1": "001"
+            }
+         ]
+      },
+      {
+         "Data": [
+            "Setup",
+            [
+               {
+                  "Month": "01"
+               },
+               {
+                  "Day": "01"
+               },
+               {
+                  "Year": "99"
+               },
+               {
+                  "Hour": "10"
+               },
+               {
+                  "Minute": "10"
+               },
+               {
+                  "Second": "00"
+               }
+            ],
+            "LastUsed",
+            [
+               {
+                  "Month": "01"
+               },
+               {
+                  "Day": "01"
+               },
+               {
+                  "Year": "99"
+               },
+               {
+                  "Hour": "10"
+               },
+               {
+                  "Minute": "10"
+               },
+               {
+                  "Second": "00"
+               }
+            ],
+            "Verified",
+            [
+               {
+                  "Month": "01"
+               },
+               {
+                  "Day": "01"
+               },
+               {
+                  "Year": "99"
+               },
+               {
+                  "Hour": "10"
+               },
+               {
+                  "Minute": "10"
+               },
+               {
+                  "Second": "00"
+               }
+            ],
+            "LowOnCodes",
+            false
+         ]
+      }
+   ],
+   "g": [
+      {
+         "Keys": [
+            {
+               "recovery1": "001"
+            },
+            {
+               "recovery2": "002"
+            },
+            {
+               "recovery3": "003"
+            },
+            {
+               "recovery4": "used.004"
+            },
+            {
+               "recovery5": "used.005"
+            }
+         ]
+      },
+      {
+         "OTP": [
+            {
+               "HasOTP": false
+            }
+         ]
+      },
+      {
+         "Data": [
+            "Setup",
+            [
+               {
+                  "Month": "01"
+               },
+               {
+                  "Day": "01"
+               },
+               {
+                  "Year": "99"
+               },
+               {
+                  "Hour": "10"
+               },
+               {
+                  "Minute": "10"
+               },
+               {
+                  "Second": "00"
+               }
+            ],
+            "LastUsed",
+            [
+               {
+                  "Month": "01"
+               },
+               {
+                  "Day": "01"
+               },
+               {
+                  "Year": "99"
+               },
+               {
+                  "Hour": "10"
+               },
+               {
+                  "Minute": "10"
+               },
+               {
+                  "Second": "00"
+               }
+            ],
+            "Verified",
+            [
+               {
+                  "Month": "01"
+               },
+               {
+                  "Day": "01"
+               },
+               {
+                  "Year": "99"
+               },
+               {
+                  "Hour": "10"
+               },
+               {
+                  "Minute": "10"
+               },
+               {
+                  "Second": "00"
+               }
+            ],
+            "LowOnCodes",
+            false
+         ]
+      }
+   ]
+}
